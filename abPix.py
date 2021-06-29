@@ -133,7 +133,6 @@ def make_save():
     if not fname: return
     testname = fname + ' '
     if testname[-7:-1] != '.abpix': fname += '.abpix'
-    print(fname)
     f = open(fname, 'w')
     f.write('build_canvas('+str(len(g.imgmap[0]))+', '+str(len(g.imgmap))+')\ng.imgmap = '+str(g.imgmap))
     f.close()
@@ -142,7 +141,6 @@ def make_export():
     fname = filedialog.asksaveasfilename(title = 'Export As PNG',filetypes=[("PNG Image", "*.png")])
     testname = fname + ' '
     if testname[-5:-1] != '.png': fname += '.png'
-    print(fname)
     towrite = []
     for i in range(len(g.imgmap)):
         towrite.append([])
@@ -246,7 +244,6 @@ def click_hotkey(key, mod):
     elif key == 113: g.move_x += 1; click_scale(0)
     elif key == 116: g.move_y -= 1; click_scale(0)
     elif key == 114: g.move_x -= 1; click_scale(0)
-    print(key)
 
 def init_abpix():
     rect(0, 0, g.swidth // 15, g.sheight, '#222')
