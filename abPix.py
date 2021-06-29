@@ -163,7 +163,8 @@ def click_draw(x, y, mode = 1):
     point_x = (x-g.left_panel_x)//g.scale-g.move_x
     point_y = y//g.scale-g.move_y
     g.log.append((point_x, point_y, g.imgmap[point_y][point_x]))
-    g.imgmap[point_y][point_x] = g.color*mode
+    if mode: g.imgmap[point_y][point_x] = g.color
+    else: g.imgmap[point_y][point_x] = 0
     g.c.delete(g.img[point_y][point_x])
     if mode: g.img[point_y][point_x] = g.c.create_rectangle(coord_x, coord_y, coord_x+g.scale, coord_y+g.scale, fill=g.imgmap[point_y][point_x])
     else: g.img[point_y][point_x] = g.c.create_rectangle(coord_x, coord_y, coord_x+g.scale, coord_y+g.scale, fill='#fff')
