@@ -125,10 +125,12 @@ def make_open():
     try: exec(open(fname.name).read())
     except: return messagebox.showinfo('abPix error', 'abPix can load only .abpix files')
     g.move_x = g.move_y = 0
+    g.log = []
     g.saved = 1
     click_scale(0)
 def make_save():
     fname = filedialog.asksaveasfilename(title = 'Save project',filetypes=[("abPix Project File", "*.abpix")])
+    if not fname: return
     testname = fname + ' '
     if testname[-7:-1] != '.abpix': fname += '.abpix'
     print(fname)
