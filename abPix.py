@@ -121,14 +121,14 @@ def make_open():
     if not g.saved:
         proceed = messagebox.askokcancel('Unsaved file', 'Your current project is unsaved, proceed?')
         if not proceed: return
-    fname = filedialog.askopenfile()
+    fname = filedialog.askopenfile(title = 'Load project',filetypes=[("abPix Project File", "*.abpix")])
     try: exec(open(fname.name).read())
     except: return messagebox.showinfo('abPix error', 'abPix can load only .abpix files')
     g.move_x = g.move_y = 0
     g.saved = 1
     click_scale(0)
 def make_save():
-    fname = filedialog.asksaveasfilename(title = 'Save project')
+    fname = filedialog.asksaveasfilename(title = 'Save project',filetypes=[("abPix Project File", "*.abpix")])
     testname = fname + ' '
     if testname[-7:-1] != '.abpix': fname += '.abpix'
     print(fname)
@@ -137,7 +137,7 @@ def make_save():
     f.close()
     if not g.saved: g.saved = 1 
 def make_export():
-    fname = filedialog.asksaveasfilename()
+    fname = filedialog.asksaveasfilename(title = 'Export As PNG',filetypes=[("PNG Image", "*.png")])
     testname = fname + ' '
     if testname[-5:-1] != '.png': fname += '.png'
     print(fname)
