@@ -122,6 +122,7 @@ def make_open():
         proceed = messagebox.askokcancel('Unsaved file', 'Your current project is unsaved, proceed?')
         if not proceed: return
     fname = filedialog.askopenfile(title = 'Load project',filetypes=[("abPix Project File", "*.abpix")])
+    if not fname: return
     try: exec(open(fname.name).read())
     except: return messagebox.showinfo('abPix error', 'abPix can load only .abpix files')
     g.move_x = g.move_y = 0
@@ -233,17 +234,17 @@ def click_secondary(x, y):
     elif x > g.right_panel_x: click_right_panel(x, y)
 
 def click_hotkey(key, mod):
-    if (mod & 0x4):
-        if key == 39: make_save()
-        elif key == 52: make_undo()
-        elif key == 32: make_open()
-        elif key == 26: make_export()
-    if key == 20: click_scale(-5)
-    elif key == 21: click_scale(5)
-    elif key == 111: g.move_y += 1; click_scale(0)
-    elif key == 113: g.move_x += 1; click_scale(0)
-    elif key == 116: g.move_y -= 1; click_scale(0)
-    elif key == 114: g.move_x -= 1; click_scale(0)
+    if (mod & 0x4) or mod == 4:
+        if key == 39 or key == 83: make_save()
+        elif key == 52 or key == 90: make_undo()
+        elif key == 32 or key == 79: make_open()
+        elif key == 26 or key == 69: make_export()
+    if key == 20 or key == 189: click_scale(-5)
+    elif key == 21 or key == 187: click_scale(5)
+    elif key == 111 or key == 37: g.move_y += 1; click_scale(0)
+    elif key == 113 or key == 38: g.move_x += 1; click_scale(0)
+    elif key == 116 or key == 40: g.move_y -= 1; click_scale(0)
+    elif key == 114 or key == 39: g.move_x -= 1; click_scale(0)
 
 def init_abpix():
     rect(0, 0, g.swidth // 15, g.sheight, '#222')
