@@ -241,8 +241,8 @@ def click_hotkey(key, mod):
         elif key == 26 or key == 69: make_export()
     if key == 20 or key == 189: click_scale(-5)
     elif key == 21 or key == 187: click_scale(5)
-    elif key == 111 or key == 37: g.move_y += 1; click_scale(0)
-    elif key == 113 or key == 38: g.move_x += 1; click_scale(0)
+    elif key == 111 or key == 38: g.move_y += 1; click_scale(0)
+    elif key == 113 or key == 37: g.move_x += 1; click_scale(0)
     elif key == 116 or key == 40: g.move_y -= 1; click_scale(0)
     elif key == 114 or key == 39: g.move_x -= 1; click_scale(0)
 
