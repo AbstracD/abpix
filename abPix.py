@@ -146,9 +146,10 @@ def make_export():
     for i in range(len(g.imgmap)):
         towrite.append([])
         for j in g.imgmap[i]:
-            v1, v2, v3 = g.hxrev[j[1]], g.hxrev[j[2]], g.hxrev[j[3]]
-            v1, v2, v3 = v1*v1, v2*v2, v3*v3
-            if j: towrite[i] += [v1, v2, v3, 255]
+            if j:
+                v1, v2, v3 = g.hxrev[j[1]], g.hxrev[j[2]], g.hxrev[j[3]]
+                v1, v2, v3 = v1*v1, v2*v2, v3*v3
+                towrite[i] += [v1, v2, v3, 255]
             else: towrite[i] += [0, 0, 0, 0]
     png.Writer(width = len(g.imgmap[0]), height = len(g.imgmap), alpha = True, greyscale = False).write(open(fname, 'wb'), towrite)
 
